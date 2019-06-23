@@ -13,9 +13,39 @@
 </head>
 <body>
     
+    <div class="container">
+
+        <!-- This row will contain the selectable gif categories and the input box to add to selectable gifs -->
+        <div class="row">
+
+            <!-- This column will contain the list of selectable gif categories -->
+            <div class="col-8">
+
+                <!-- Rendered buttons will get dumped here -->
+                <div id="buttons-view"></div>
+            </div>
+
+            <!-- This column will contain an input box to add new categories -->
+            <div class="col-4">
+
+                <form id="gif-form">
+                    <label for="gif-input">Add a Category:</label>
+                    <input type="text" id="gif-input">
+                    <br>
+
+                    <!-- Button triggers new category to be added -->
+                    <input id="add-gif" type="submit" value="Add Category!">
+                </form>
+            </div>
+        </div>
+    
 
 
-
+    
+    
+    
+    
+    </div>
 
     <script type="text/javascript" src="javascript/app.js"></script>
 </body>
