@@ -1,7 +1,7 @@
 // apikey qSpzO28dzsyYVDZ7HvaUiBbsgvCN1OJ5
 
 // Initial array of categories
-var categories = ["Cat", "Dog", "Mouse"];
+var categories = ["Halo", "Overwatch", "Call of Duty", "Witcher", "Super Smash Bros"];
 
 
 
@@ -31,7 +31,7 @@ function displayGifs() {
             var categoryDiv = $("<div>");
 
             // give the div a class of gif
-            categoryDiv.addClass("gif");
+            categoryDiv.addClass("gif m-2");
 
             // Storing the rating data
             var rating = response.data[i].rating;
@@ -43,15 +43,15 @@ function displayGifs() {
             categoryDiv.append(pOne);
 
             // Retrieving the url for the still gif
-            var gifUrl = response.data[i].images.fixed_width_still.url;
+            // Use fixed height for nice rows
+            var gifUrl = response.data[i].images.fixed_height_still.url;
 
             // Creating an element to hold the still
             var gif = $("<img>").attr("src", gifUrl);
             gif.addClass("gify");
             gif.attr("data-state", "still");
-
-            gif.attr("data-still", response.data[i].images.fixed_width_still.url);
-            gif.attr("data-animate", response.data[i].images.fixed_width.url);
+            gif.attr("data-still", response.data[i].images.fixed_height_still.url);
+            gif.attr("data-animate", response.data[i].images.fixed_height.url);
 
             // Appending the still
             categoryDiv.append(gif);
@@ -108,6 +108,9 @@ $("#add-category").on("click", function(event) {
     // Calling the renderButtons function to show our newly added button
     renderButtons();
     console.log(categories);
+
+    // Empty the text box
+    $("#category-input").val("");
 
 });
 
