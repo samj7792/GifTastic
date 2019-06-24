@@ -9,7 +9,7 @@ var categories = ["Cat", "Dog", "Mouse"];
 // displayGifs function re-renders the HTML to display the appropriate content
 function displayGifs() {
 
-    // gif is assigned the value of the data-name attribute of the button clicked
+    // gif is assigned the value of the data-name attribute of the button (this) clicked
     var category = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + category + "&api_key=qSpzO28dzsyYVDZ7HvaUiBbsgvCN1OJ5&limit=10";
 
@@ -43,13 +43,18 @@ function displayGifs() {
             categoryDiv.append(pOne);
 
             // Retrieving the url for the still gif
-            var imgUrl = response.data[i].images.downsized_still.url;
+            var gifUrl = response.data[i].images.fixed_width_still.url;
 
             // Creating an element to hold the still
-            var image = $("<img>").attr("src", imgUrl);
+            var gif = $("<img>").attr("src", gifUrl);
+            gif.addClass("gify");
+            gif.attr("data-state", "still");
+
+            gif.attr("data-still", response.data[i].images.fixed_width_still.url);
+            gif.attr("data-animate", response.data[i].images.fixed_width.url);
 
             // Appending the still
-            categoryDiv.append(image);
+            categoryDiv.append(gif);
 
             // Putting the entire categoryDiv above the previous
             $("#gifs-view").prepend(categoryDiv);
@@ -109,3 +114,30 @@ $("#add-category").on("click", function(event) {
 
 // Calling the renderButtons function to display  the initial buttons
 renderButtons();
+
+
+
+// This function handles when a gif is clicked it will toggle still or animated
+$(document).on("click", ".gify", function() {
+
+    // Set state to the gifs data-state attr value
+    var state = $(this).attr("data-state");
+
+    if ( state === "still" ) {
+
+        // Set the src to the animated url
+        $(this).attr("src", $(this).attr("data-animate"));
+
+        // Set the data-state to animated
+        $(this).attr("data-state", "animated");
+    }
+
+    else {
+
+        // Set the src to the still url
+        $(this).attr("src", $(this).attr("data-still"));
+
+        // Set the data-state to still
+        $(this).attr("data-state", "still");
+    }
+});
