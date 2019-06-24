@@ -87,6 +87,25 @@ function renderButtons() {
     }
 }
 
+// This function handles when the add-category btn is clicked
+$("#add-category").on("click", function(event) {
+
+    // Prevents the page from being reloaded on click
+    event.preventDefault();
+
+    // This line grabs the input from the textbox
+    var category = $("#category-input").val();
+    console.log(category);
+
+    // Adding the category from the textbox to our categories array
+    categories.push(category);
+
+    // Calling the renderButtons function to show our newly added button
+    renderButtons();
+    console.log(categories);
+
+});
+
 
 // Calling the renderButtons function to display  the initial buttons
 renderButtons();
