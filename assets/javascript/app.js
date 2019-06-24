@@ -1,7 +1,7 @@
 // apikey qSpzO28dzsyYVDZ7HvaUiBbsgvCN1OJ5
 
 // Initial array of categories
-var categories = ["Halo", "Overwatch", "Call of Duty", "Witcher", "Super Smash Bros"];
+var categories = ["Halo", "Overwatch", "Call of Duty", "Witcher", "Smash Bros", "Rocket League"];
 
 
 
@@ -37,7 +37,7 @@ function displayGifs() {
             var rating = response.data[i].rating;
 
             // Creating an elementto have the rating displayed
-            var pOne = $("<p>").text("Rating: " + rating);
+            var pOne = $("<h6>").text("Rating: " + rating);
             
             // Displaying the rating
             categoryDiv.append(pOne);
@@ -81,7 +81,7 @@ function renderButtons() {
         // Then generate buttons for each category in the array
         var btn = $("<button>");
         // Giving a class of category-btn
-        btn.addClass("category-btn");
+        btn.addClass("category-btn btn btn-primary m-1");
         // Adding a data-name attribute 
         btn.attr("data-name", categories[i]);
         // Providing the initail button text

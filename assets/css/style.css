@@ -1,3 +1,8 @@
+body {
+    background-image: url(../images/binding_light.png);
+}
+
+
 .gif {
     float: left;
 }
