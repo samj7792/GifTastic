@@ -2,6 +2,10 @@ body {
     background-image: url(../images/binding_light.png);
 }
 
+.container {
+    margin-top:5px;
+}
+
 
 .gif {
     float: left;
