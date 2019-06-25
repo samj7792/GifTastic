@@ -1,7 +1,7 @@
 // apikey qSpzO28dzsyYVDZ7HvaUiBbsgvCN1OJ5
 
-// Initial array of categories
-var categories = ["Halo", "Overwatch", "Call of Duty", "Witcher", "Smash Bros", "Rocket League"];
+// Initial array of topics
+var topics = ["Halo", "Overwatch", "Call of Duty", "Witcher", "Smash Bros", "Rocket League"];
 
 
 
@@ -46,7 +46,7 @@ function displayGifs() {
             // Use fixed height for nice rows
             var gifUrl = response.data[i].images.fixed_height_still.url;
 
-            // Creating an element to hold the still
+            // Creating an element to hold the still gif
             var gif = $("<img>").attr("src", gifUrl);
             gif.addClass("gify");
             gif.attr("data-state", "still");
@@ -71,21 +71,21 @@ $(document).on("click", ".category-btn", displayGifs);
 // Function for displaying category buttons
 function renderButtons() {
 
-    // Deleting the categories prior to adding new categories
+    // Deleting the topics prior to adding new topics
     // This is necessary otherwise you will have repeat buttons
     $("#buttons-view").empty();
 
-    // Looping through the array of categories
-    for (var i = 0; i<categories.length; i++) {
+    // Looping through the array of topics
+    for (var i = 0; i<topics.length; i++) {
 
         // Then generate buttons for each category in the array
         var btn = $("<button>");
         // Giving a class of category-btn
         btn.addClass("category-btn btn btn-primary m-1");
         // Adding a data-name attribute 
-        btn.attr("data-name", categories[i]);
+        btn.attr("data-name", topics[i]);
         // Providing the initail button text
-        btn.text(categories[i]);
+        btn.text(topics[i]);
         // Adding the button to the buttons-view div
         $("#buttons-view").append(btn);
 
@@ -102,12 +102,12 @@ $("#add-category").on("click", function(event) {
     var category = $("#category-input").val();
     console.log(category);
 
-    // Adding the category from the textbox to our categories array
-    categories.push(category);
+    // Adding the category from the textbox to our topics array
+    topics.push(category);
 
     // Calling the renderButtons function to show our newly added button
     renderButtons();
-    console.log(categories);
+    console.log(topics);
 
     // Empty the text box
     $("#category-input").val("");
